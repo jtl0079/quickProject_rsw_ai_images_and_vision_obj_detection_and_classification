@@ -1,0 +1,26 @@
+name: rsw_ai
+
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.12
+
+  - numpy=1.26.4
+  - matplotlib
+  - pillow
+  - opencv
+
+  - pytorch
+  - torchvision
+  - torchaudio
+
+  - jupyter
+  - ipykernel
+
+  - pip
+
+  - pip:
+      - ultralytics

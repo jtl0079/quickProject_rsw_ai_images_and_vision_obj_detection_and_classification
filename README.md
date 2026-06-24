@@ -52,3 +52,5 @@ The repository was created as an academic quick project and serves as a referenc
 Completing project.
 
 This repository is maintained for reference purposes.
+
+[further details](docs/eng_raw/README.md)

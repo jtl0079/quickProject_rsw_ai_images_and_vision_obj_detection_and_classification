@@ -3,7 +3,7 @@
 @echo off
 
 set conda_env_name=rsw_ai
-set conda_env_config_file_name=rsw_ai_anaconda_env.yml
+set conda_env_config_file_name=rsw_ai_conda_env.yml
 
 echo ==================================
 echo Creating Conda Environment...

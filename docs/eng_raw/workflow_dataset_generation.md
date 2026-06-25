@@ -72,7 +72,7 @@ Controls the category and structural characteristics of target objects.
 | Number of Objects | Number of target objects          |
 | Shape Complexity  | Geometric complexity of the shape |
 
-Supported shapes:
+Example shapes:
 
 * Circle
 * Triangle

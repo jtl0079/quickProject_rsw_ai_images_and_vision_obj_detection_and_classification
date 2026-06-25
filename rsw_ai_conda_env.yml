@@ -1,26 +1,28 @@
 name: rsw_ai
 
 channels:
-  - pytorch
   - conda-forge
   - defaults
 
 dependencies:
-  - python>=3.12, <3.13
+  - python>=3.11, <3.12
 
-  - numpy #=1.26.4
+  - numpy
   - matplotlib
   - pillow
-  - opencv
 
-  - pytorch
-  - torchvision
-  - torchaudio
-
+  - pyyaml
   - jupyter
   - ipykernel
+
+  - libgl
 
   - pip
 
   - pip:
-      - ultralytics
+      --index-url https://download.pytorch.org/whl/cu118
+      torch
+      torchvision
+      torchaudio
+      opencv-python
+      requests

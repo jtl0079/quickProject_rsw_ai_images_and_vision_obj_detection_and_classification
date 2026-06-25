@@ -47,6 +47,20 @@ echo ==================================
 python -m ipykernel install --user ^
     --name %conda_env_name% ^
     --display-name "Python (%conda_env_name%)"
+
+
+echo.
+echo ==================================
+echo Installing Project...
+echo ==================================
+
+pip install -e .
+
+if errorlevel 1 (
+    echo Failed to install project.
+    pause
+    exit /b 1
+)
     
 
 echo.

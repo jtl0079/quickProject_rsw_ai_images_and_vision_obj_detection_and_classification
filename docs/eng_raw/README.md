@@ -45,7 +45,7 @@ The system combines traditional Image Processing techniques and Deep Learning ap
 ```text
 Problem Definition
         ↓
-Dataset Creation
+Dataset Generation
         ↓
 Image Processing
         ↓

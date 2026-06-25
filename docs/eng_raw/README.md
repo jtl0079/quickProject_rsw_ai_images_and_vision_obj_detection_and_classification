@@ -42,17 +42,16 @@ The system combines traditional Image Processing techniques and Deep Learning ap
 
 ## Project Workflow
 
-```text
-Problem Definition
-        ↓
-Dataset Generation
-        ↓
-Image Processing
-        ↓
-Traditional Detection
-        ↓
-YOLO Training
-        ↓
-Evaluation
-        ↓
-Application Development
+- Problem Definition
+  ↓
+- [Dataset Generation](workflow_dataset_generation.md)
+  ↓
+- Image Processing
+  ↓
+- Traditional Detection
+  ↓
+- Model/YOLO Training
+  ↓
+- [Evaluation](evaluation.md)
+  ↓
+- Application Development

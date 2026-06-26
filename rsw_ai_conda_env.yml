@@ -10,19 +10,15 @@ dependencies:
   - numpy
   - matplotlib
   - pillow
-
   - pyyaml
   - jupyter
   - ipykernel
 
-  - libgl
-
   - pip
 
   - pip:
-      --index-url https://download.pytorch.org/whl/cu118
-      torch
-      torchvision
-      torchaudio
-      opencv-python
-      requests
+      - torch
+      - torchvision
+      - torchaudio
+      - opencv-python
+      - requests

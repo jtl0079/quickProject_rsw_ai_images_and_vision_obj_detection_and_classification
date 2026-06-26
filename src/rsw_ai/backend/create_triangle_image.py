@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from draw_triangle import draw_triangle
+from rsw_ai.backend.draw_triangle import draw_triangle
 
 
 def create_triangle_image(

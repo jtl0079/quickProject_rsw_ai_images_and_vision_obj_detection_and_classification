@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import rsw_ai.backend.draw_square as draw_square
+from rsw_ai.backend.draw_square import *
 
 def create_square_image(
     filename: str = "square.png",

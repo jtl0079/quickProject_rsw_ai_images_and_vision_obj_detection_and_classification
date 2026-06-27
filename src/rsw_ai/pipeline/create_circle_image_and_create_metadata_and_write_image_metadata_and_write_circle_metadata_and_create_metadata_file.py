@@ -8,8 +8,13 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
     create_metadata_and_write_image_metadata,
 )
 
+# NOTE
+# 1. create_circle_image
+# 2. create_metadata_and_write_image_metadata
+# 3. write_circle_metadata
+# 4. create_metadata_file
 
-def create_circle_image_and_create_circle_metadata_and_create_metadata_file(
+def create_circle_image_and_create_metadata_and_write_image_metadata_and_write_circle_metadata_and_create_metadata_file(
     filename: str = "circle.png",
     json_filename: str | None = None,
     width: int = 500,

@@ -1,13 +1,17 @@
-# rsw_ai/pipeline/create_circle_image_and_create_metadata.py
+# rsw_ai/pipeline/create_circle_image_and_create_circle_metadata_and_create_metadata_file.py
 
 from rsw_ai.backend.create_circle_image import create_circle_image
 from rsw_ai.backend.create_circle_metadata import create_circle_metadata
 from rsw_ai.backend.create_metadata_file import create_metadata_file
 
+from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
+    create_metadata_and_write_image_metadata,
+)
+
 
 def create_circle_image_and_create_circle_metadata_and_create_metadata_file(
     filename: str = "circle.png",
-    json_filename: str | None = None,          
+    json_filename: str | None = None,
     width: int = 500,
     height: int = 500,
     center: tuple[int, int] | None = None,
@@ -45,6 +49,7 @@ def create_circle_image_and_create_circle_metadata_and_create_metadata_file(
     -------
     None
     """
+
     # 1. Create and save the image.
     create_circle_image(
         filename=filename,
@@ -57,18 +62,29 @@ def create_circle_image_and_create_circle_metadata_and_create_metadata_file(
         thickness=thickness,
     )
 
-    # 2. Build the metadata dictionary.
-    metadata = create_circle_metadata(
+    # 2. Initialize metadata with image information.
+    metadata = create_metadata_and_write_image_metadata(
         filename=filename,
         width=width,
         height=height,
-        center=center,
-        radius=radius,
-        circle_color=circle_color,
-        thickness=thickness,
     )
 
-    # 3. Determine JSON output path and save.
+    # 3. Create and append the circle metadata.
+    metadata["objects"].append(
+        create_circle_metadata(
+            object_id=0,
+            center=center,
+            radius=radius,
+            color=circle_color,
+            filled=(thickness == -1),
+        )
+    )
+
+    # 4. Determine JSON output path and save.
     if json_filename is None:
         json_filename = filename.rsplit(".", 1)[0] + ".json"
-    create_metadata_file(json_filename, metadata)
+
+    create_metadata_file(
+        file_path=json_filename,
+        metadata=metadata,
+    )

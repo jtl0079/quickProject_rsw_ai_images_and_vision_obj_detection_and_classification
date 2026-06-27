@@ -1,75 +1,32 @@
 
+from typing import Any
+from rsw_ai.backend.create_object_metadata import create_object_metadata
 
+
+# /object/class = circle
 def create_circle_metadata(
-    filename: str,
-    width: int,
-    height: int,
-    center: tuple[int, int] | None,
+    object_id: int,
+    center: tuple[int, int],
     radius: int,
-    circle_color: tuple[int, int, int],
-    thickness: int,
-) -> dict:
-    """
-    Create a metadata dictionary in the Dataset Generator format for a circle.
-
-    Parameters
-    ----------
-    filename : str
-        Image filename used in the metadata.
-    width : int
-        Image width in pixels.
-    height : int
-        Image height in pixels.
-    center : tuple[int, int] | None
-        Circle center coordinates (x, y). If None, the image center is used.
-    radius : int
-        Circle radius in pixels.
-    circle_color : tuple[int, int, int]
-        Circle color in BGR format.
-    thickness : int
-        Border thickness. A value of -1 indicates a filled circle.
-
-    Returns
-    -------
-    dict
-        Metadata dictionary containing image information and object annotations.
-    """
-    # Determine the actual center.
-    if center is None:
-        center = (width // 2, height // 2)
-    cx, cy = center
-
-    # Compute the bounding box and object dimensions.
-    xmin = cx - radius
-    ymin = cy - radius
-    xmax = cx + radius
-    ymax = cy + radius
-    obj_width = 2 * radius
-    obj_height = 2 * radius
-
-    return {
-        "image": {
-            "filename": filename,
-            "width": width,
-            "height": height,
-        },
-        "objects": [
-            {
-                "id": 0,
-                "class": "circle",
-                "center": [cx, cy],
-                "bbox": {
-                    "xmin": xmin,
-                    "ymin": ymin,
-                    "xmax": xmax,
-                    "ymax": ymax,
-                },
-                "width": obj_width,
-                "height": obj_height,
-                "radius": radius,
-                "rotation": 0,
-                "color": list(circle_color),
-                "filled": thickness == -1,
-            }
-        ],
+    rotation: float = 0.0,
+    color: tuple[int, int, int] = (0, 0, 0),
+    filled: bool = False,
+) -> dict[str, Any]:
+    bbox = {
+        "xmin": center[0] - radius,
+        "ymin": center[1] - radius,
+        "xmax": center[0] + radius,
+        "ymax": center[1] + radius,
     }
+
+    obj = create_object_metadata(
+        object_id=object_id,
+        object_class="circle",
+        center=center,
+        bbox=bbox,
+        rotation=rotation,
+        color=color,
+        filled=filled,
+    )
+    obj["radius"] = radius
+    return obj

@@ -234,6 +234,7 @@ Purpose:
 
 ---
 
+
 ## 4. Dataset Configuration
 
 Recommended configuration structure:
@@ -264,7 +265,39 @@ Benefits:
 
 ---
 
-## 5. Future Extensions
+## 5. Dataset Implementation
+
+Metadata generation workflow
+```
+create_metadata()
+        │
+        ▼
+metadata
+        │
+        ▼
+write_image_metadata(...)
+        │
+        ▼
+metadata
+        │
+        ├──────────────┐
+        ▼              ▼
+create_circle_metadata(...)
+create_triangle_metadata(...)
+        │              │
+        ▼              ▼
+add_object_metadata(...)
+add_object_metadata(...)
+        │
+        ▼
+metadata
+        │
+        ▼
+write_metadata_file(metadata)
+
+```
+
+## 6. Future Extensions
 
 Current support:
 
@@ -289,7 +322,7 @@ All dataset types should share the same configuration and generation framework.
 
 ---
 
-## 6. Recommended Research Variables
+## 7. Recommended Research Variables
 
 The following variables are particularly useful for machine learning experiments:
 
@@ -310,7 +343,7 @@ These variables help evaluate model robustness against geometric changes, color 
 
 ---
 
-## 7. Conclusion
+## 8. Conclusion
 
 A dataset generator should be designed as a configurable, extensible, and reproducible platform.
 

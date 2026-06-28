@@ -22,3 +22,4 @@ dependencies:
       - torchaudio
       - opencv-python
       - requests
+      - ruff

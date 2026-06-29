@@ -71,6 +71,7 @@ class DatasetGenerator:
     def create_circle_dataset(
         self,
         image_filename: str = "circle.png",
+        metadata_filename: str = "circle.json",
         count: int = 1,
         width: int | Callable | None = 500,
         height: int | Callable | None = 500,
@@ -139,6 +140,8 @@ class DatasetGenerator:
             path = Path(current_filename)
             json_filename = str(path.with_suffix(".json"))
 
+            current_metadata_filename = generate_unique_filename(metadata_filename)
+
             current_width = self._value(
                 width,
                 param_a=index,
@@ -184,7 +187,7 @@ class DatasetGenerator:
 
             create_circle_dataset(
                 filename=current_filename,
-                json_filename=json_filename,
+                json_filename=current_metadata_filename,
                 width=current_width,
                 height=current_height,
                 center=current_center,

@@ -1,13 +1,13 @@
 # src/rsw_ai/api/create_circle_dataset.py
 
-from rsw_ai.pipeline.create_circle_image_and_create_metadata_and_write_image_metadata_and_write_circle_metadata_and_create_metadata_file import (
+from rsw_ai.pipeline.create_circle_image_and_circle_metadata_file import (
     create_circle_image_and_create_metadata_and_write_image_metadata_and_write_circle_metadata_and_create_metadata_file,
 )
 
 
 def create_circle_dataset(
-    filename: str = "circle.png",
-    json_filename: str | None = None,
+    image_filename: str = "circle.png",
+    metadata_filename: str | None = None,
     width: int = 500,
     height: int = 500,
     center: tuple[int, int] | None = None,
@@ -21,8 +21,8 @@ def create_circle_dataset(
     """
 
     create_circle_image_and_create_metadata_and_write_image_metadata_and_write_circle_metadata_and_create_metadata_file(
-        filename=filename,
-        json_filename=json_filename,
+        filename=image_filename,
+        metadata_filename=metadata_filename,
         width=width,
         height=height,
         center=center,

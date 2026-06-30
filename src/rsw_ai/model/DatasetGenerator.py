@@ -7,7 +7,7 @@ from rsw_ai.backend.generate_unique_filename import generate_unique_filename
 class DatasetGenerator:
     _DEFAULT_GENERATE_COLOR_ALGORITHM = staticmethod(lambda param_a: (param_a % 256, param_a *2 %256, param_a *3 %256) )
     _DEFAULT_GENERATE_COORDINATE_ALGORITHM  = staticmethod( lambda param_a: (param_a, param_a *2) ) # 1 param, return tuple[int, int] 
-    _DEFAULT_GENERATE_FILENAME_ALGORITHM    = generate_unique_filename           # 1 param
+    _DEFAULT_GENERATE_FILENAME_ALGORITHM    = staticmethod(generate_unique_filename)           # 1 param
 
     def __init__(self):
         # Image
@@ -23,9 +23,9 @@ class DatasetGenerator:
 
         # Default algorithm
         self.algorithm = lambda value: value
-        self.generate_color_algorithm = self._DEFAULT_GENERATE_COLOR_ALGORITHM
-        self.generate_coordinate_algorithm = self._DEFAULT_GENERATE_COORDINATE_ALGORITHM
-        self.generate_filename_algorithm = self._DEFAULT_GENERATE_FILENAME_ALGORITHM   
+        self.generate_color_algorithm = self._DEFAULT_GENERATE_COLOR_ALGORITHM              # return: tuple(int, int, int)
+        self.generate_coordinate_algorithm = self._DEFAULT_GENERATE_COORDINATE_ALGORITHM    # return: tuple(int, int)
+        self.generate_filename_algorithm = self._DEFAULT_GENERATE_FILENAME_ALGORITHM        #
 
     def _value(
         self,
@@ -137,8 +137,6 @@ class DatasetGenerator:
         for index in range(count):
 
             current_filename = generate_unique_filename(image_filename)
-            path = Path(current_filename)
-            json_filename = str(path.with_suffix(".json"))
 
             current_metadata_filename = generate_unique_filename(metadata_filename)
 
@@ -186,8 +184,8 @@ class DatasetGenerator:
 
 
             create_circle_dataset(
-                filename=current_filename,
-                json_filename=current_metadata_filename,
+                image_filename=current_filename,
+                metadata_filename=current_metadata_filename,
                 width=current_width,
                 height=current_height,
                 center=current_center,

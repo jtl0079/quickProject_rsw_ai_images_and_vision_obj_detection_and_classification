@@ -1,14 +1,11 @@
-
 from typing import Any
 from rsw_ai.backend.create_object_metadata import create_object_metadata
 
 
-# /object/class = circle
 def create_circle_metadata(
     object_id: int,
     center: tuple[int, int],
     radius: int,
-    rotation: float = 0.0,
     color: tuple[int, int, int] = (0, 0, 0),
     filled: bool = False,
 ) -> dict[str, Any]:
@@ -24,9 +21,11 @@ def create_circle_metadata(
         object_class="circle",
         center=center,
         bbox=bbox,
-        rotation=rotation,
+        rotation=0.0,
         color=color,
         filled=filled,
     )
+
     obj["radius"] = radius
+
     return obj

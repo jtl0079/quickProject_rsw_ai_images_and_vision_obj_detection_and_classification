@@ -1,4 +1,4 @@
-# rsw_ai/pipeline/create_circle_image_and_create_circle_metadata_and_create_metadata_file.py
+# rsw_ai/pipeline/create_circle_image_and_circle_metadata_file.py
 
 from rsw_ai.backend.create_circle_image import create_circle_image
 from rsw_ai.backend.create_circle_metadata import create_circle_metadata
@@ -8,6 +8,7 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
     create_metadata_and_write_image_metadata,
 )
 
+
 # NOTE
 # 1. create_circle_image
 # 2. create_metadata_and_write_image_metadata
@@ -16,7 +17,7 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
 
 def create_circle_image_and_create_metadata_and_write_image_metadata_and_write_circle_metadata_and_create_metadata_file(
     filename: str = "circle.png",
-    json_filename: str | None = None,
+    metadata_filename: str | None = None,
     width: int = 500,
     height: int = 500,
     center: tuple[int, int] | None = None,
@@ -32,7 +33,7 @@ def create_circle_image_and_create_metadata_and_write_image_metadata_and_write_c
     ----------
     filename : str
         Output image filename.
-    json_filename : str, optional
+    metadata_filename : str, optional
         Output JSON filename. If None, defaults to the image filename
         with its extension replaced by '.json'.
     width : int
@@ -86,10 +87,10 @@ def create_circle_image_and_create_metadata_and_write_image_metadata_and_write_c
     )
 
     # 4. Determine JSON output path and save.
-    if json_filename is None:
-        json_filename = filename.rsplit(".", 1)[0] + ".json"
+    if metadata_filename is None:
+        metadata_filename = filename.rsplit(".", 1)[0] + ".json"
 
     create_metadata_file(
-        file_path=json_filename,
+        file_path=metadata_filename,
         metadata=metadata,
     )

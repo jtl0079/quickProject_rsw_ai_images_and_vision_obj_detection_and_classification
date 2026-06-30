@@ -21,7 +21,7 @@ def create_circle_dataset(
     """
 
     create_circle_image_and_create_circle_metadata_file(
-        filename=image_filename,
+        image_filename=image_filename,
         metadata_filename=metadata_filename,
         width=width,
         height=height,

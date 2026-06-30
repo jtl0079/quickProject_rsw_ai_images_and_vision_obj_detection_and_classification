@@ -26,7 +26,7 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
 # Canonical name exceeds the filename length guideline.
 
 def create_circle_image_and_create_circle_metadata_file(
-    filename: str = "circle.png",
+    image_filename: str = "circle.png",
     metadata_filename: str | None = None,
     width: int = 500,
     height: int = 500,
@@ -68,7 +68,7 @@ def create_circle_image_and_create_circle_metadata_file(
 
     # 1. Create and save the image.
     create_circle_image(
-        filename=filename,
+        filename=image_filename,
         width=width,
         height=height,
         center=center,
@@ -80,7 +80,7 @@ def create_circle_image_and_create_circle_metadata_file(
 
     # 2. Initialize metadata with image information.
     metadata = create_metadata_and_write_image_metadata(
-        filename=filename,
+        filename=image_filename,
         width=width,
         height=height,
     )
@@ -98,7 +98,7 @@ def create_circle_image_and_create_circle_metadata_file(
 
     # 4. Determine JSON output path and save.
     if metadata_filename is None:
-        metadata_filename = filename.rsplit(".", 1)[0] + ".json"
+        metadata_filename = image_filename.rsplit(".", 1)[0] + ".json"
 
     create_metadata_file(
         file_path=metadata_filename,

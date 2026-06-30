@@ -1,4 +1,4 @@
-# quickProject_ai_vision
+# qp_ai_vision
 
 ## Repository Metadata
 
@@ -24,7 +24,7 @@ quickProject_rsw_ai_images_and_vision_obj_detection_and_classification
 The actual repository name is intentionally shortened for better usability:
 
 ```text
-quickProject_ai_vision
+qp_ai_vision
 ```
 
 Reason:

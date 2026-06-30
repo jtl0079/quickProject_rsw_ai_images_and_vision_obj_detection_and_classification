@@ -1,23 +1,44 @@
-# quickProject_rsw_ai_images_and_vision_obj_detection_and_classification
+# quickProject_ai_vision
 
-## Naming Convention
+## Repository Metadata
 
-This repository follows the naming format:
+This repository uses a metadata-based identification scheme rather than embedding all information directly into the repository name.
 
-```text
-[property]_[project_id]_[category]_[title]
-```
-
-| Component  | Value                            | Description                                       |
-| ---------- | -------------------------------- | ------------------------------------------------- |
-| Property   | quickProject                     | Items with specific restrictions, such as time limits  |
-| Project ID | rsw_ai                           | Project ID identifier                       |
-| Category   | images_and_vision                | Image processing and Computer vision domain       |
-| Title      | obj_detection_and_classification | Object detection and image classification project |
+| Property | Value | Description |
+|----------|-------|-------------|
+| Property | quickProject | Indicates a project with specific constraints (e.g. limited development time). |
+| Project ID | rsw_ai | Internal project identifier. |
+| Category | images_and_vision | Image processing and computer vision domain. |
+| Title | obj_detection_and_classification | Object detection and image classification project. |
 
 ---
 
-### Repository Breakdown
+## Canonical Repository Name
+
+The repository metadata corresponds to the following canonical name:
+
+```text
+quickProject_rsw_ai_images_and_vision_obj_detection_and_classification
+```
+
+The actual repository name is intentionally shortened for better usability:
+
+```text
+quickProject_ai_vision
+```
+
+Reason:
+
+- Reduce repository path length.
+- Improve cross-platform compatibility (especially Windows).
+- Improve readability in IDEs, terminals, and Git tools.
+- Preserve complete project information through repository metadata.
+
+---
+
+## Repository Structure
+
+The canonical project hierarchy is:
 
 ```text
 quickProject
@@ -26,31 +47,45 @@ quickProject
         └── obj_detection_and_classification
 ```
 
+---
+
 ## Introduction
 
-This project focuses on object detection and image classification within the computer vision domain.
+This repository focuses on object detection and image classification within the computer vision domain.
 
-The repository was created as an academic quick project and serves as a reference implementation for image understanding tasks.
+It serves as an academic quick project and provides reference implementations for computer vision workflows.
+
+---
 
 ## Objectives
 
-* Detect objects in images
-* Classify detected objects
-* Evaluate model performance
-* Visualize prediction results
+- Detect objects in images.
+- Classify detected objects.
+- Evaluate model performance.
+- Visualize prediction results.
+
+---
 
 ## Technology Stack
 
-* Python
-* PyTorch
-* OpenCV
-* NumPy
-* Matplotlib
+- Python
+- PyTorch
+- OpenCV
+- NumPy
+- Matplotlib
+
+---
 
 ## Project Status
 
-Completing project.
+**Status:** Completing Project
 
-This repository is maintained for reference purposes.
+This repository is maintained primarily for learning and reference purposes.
 
-- [further details](docs/eng_raw/README.md)
+---
+
+## Documentation
+
+Further documentation is available at:
+
+- [docs/eng_raw/README.md](docs/eng_raw/README.md)

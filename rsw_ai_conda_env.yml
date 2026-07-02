@@ -7,10 +7,6 @@ channels:
 dependencies:
   - python>=3.11, <3.12
 
-  - numpy
-  - matplotlib
-  - pillow
-  - pyyaml
   - jupyter
   - ipykernel
 
@@ -23,3 +19,7 @@ dependencies:
       - opencv-python
       - requests
       - ruff
+      - numpy
+      - matplotlib
+      - pillow
+      - pyyaml

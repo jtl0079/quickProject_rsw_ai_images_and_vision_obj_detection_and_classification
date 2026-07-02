@@ -34,9 +34,9 @@ def draw_square(
     points = np.array(
         [
             [-side_length / 2, -side_length / 2],  # top-left
-            [ side_length / 2, -side_length / 2],  # top-right
-            [ side_length / 2,  side_length / 2],  # bottom-right
-            [-side_length / 2,  side_length / 2],  # bottom-left
+            [side_length / 2, -side_length / 2],  # top-right
+            [side_length / 2, side_length / 2],  # bottom-right
+            [-side_length / 2, side_length / 2],  # bottom-left
         ],
         dtype=np.float32,
     )
@@ -46,7 +46,7 @@ def draw_square(
     rotation_matrix = np.array(
         [
             [np.cos(theta), -np.sin(theta)],
-            [np.sin(theta),  np.cos(theta)],
+            [np.sin(theta), np.cos(theta)],
         ],
         dtype=np.float32,
     )
@@ -64,6 +64,4 @@ def draw_square(
     if thickness == -1:
         cv2.fillPoly(image, [points], color)
     else:
-        cv2.polylines(
-            image, [points], isClosed=True, color=color, thickness=thickness
-        )
+        cv2.polylines(image, [points], isClosed=True, color=color, thickness=thickness)

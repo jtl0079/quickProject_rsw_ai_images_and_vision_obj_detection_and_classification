@@ -10,7 +10,7 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
 
 
 # NOTE
-# 
+#
 # 1. create_circle_image
 # 2. create_metadata_and_write_image_metadata
 # 3. write_circle_metadata
@@ -24,6 +24,7 @@ from rsw_ai.pipeline.create_metadata_and_write_image_metadata import (
 #
 # Reason
 # Canonical name exceeds the filename length guideline.
+
 
 def create_circle_image_and_create_circle_metadata_file(
     image_filename: str = "circle.png",

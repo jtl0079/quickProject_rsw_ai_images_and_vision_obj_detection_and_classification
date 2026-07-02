@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ObjectClass(Enum):
     CIRCLE = (0, "circle")
     TRIANGLE = (1, "triangle")

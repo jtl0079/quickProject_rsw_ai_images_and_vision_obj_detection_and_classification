@@ -29,5 +29,3 @@ def create_object_metadata(
         "color": [color[0], color[1], color[2]],
         "filled": filled,
     }
-
-

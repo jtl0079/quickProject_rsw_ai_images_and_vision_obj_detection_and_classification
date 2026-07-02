@@ -83,4 +83,3 @@ def create_circle_image(
     cv2.imwrite(filename, image)
 
     return image
-

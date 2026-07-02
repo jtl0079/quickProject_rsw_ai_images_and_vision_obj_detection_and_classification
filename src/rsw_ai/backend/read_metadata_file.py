@@ -19,4 +19,3 @@ def read_metadata_file(filepath: str | Path) -> dict[str, Any]:
     """
     with Path(filepath).open("r", encoding="utf-8") as f:
         return json.load(f)
-    

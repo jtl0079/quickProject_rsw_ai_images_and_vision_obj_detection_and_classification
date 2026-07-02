@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 def write_text_file(
     output_file: str | Path,
     lines: list[str],

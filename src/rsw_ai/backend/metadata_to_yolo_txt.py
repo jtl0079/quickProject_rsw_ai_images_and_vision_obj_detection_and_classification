@@ -1,6 +1,7 @@
 from typing import Any
 from rsw_ai.enum.ObjectClass import ObjectClass
 
+
 def metadata_to_yolo_txt(metadata: dict[str, Any]) -> list[str]:
     """
     Convert metadata dict to YOLO label(.txt) format.
@@ -23,7 +24,6 @@ def metadata_to_yolo_txt(metadata: dict[str, Any]) -> list[str]:
     yolo_lines = []
 
     for obj in metadata["objects"]:
-
         bbox = obj["bbox"]
 
         xmin = bbox["xmin"]
@@ -43,11 +43,7 @@ def metadata_to_yolo_txt(metadata: dict[str, Any]) -> list[str]:
         class_id = ObjectClass.from_label(obj["class"]).id
 
         yolo_lines.append(
-            f"{class_id} "
-            f"{x_center:.6f} "
-            f"{y_center:.6f} "
-            f"{width:.6f} "
-            f"{height:.6f}"
+            f"{class_id} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}"
         )
 
     return yolo_lines

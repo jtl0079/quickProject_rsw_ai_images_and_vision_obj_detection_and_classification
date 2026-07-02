@@ -4,10 +4,17 @@ from pathlib import Path
 from rsw_ai.api.create_circle_dataset import create_circle_dataset
 from rsw_ai.backend.generate_unique_filename import generate_unique_filename
 
+
 class DatasetGenerator:
-    _DEFAULT_GENERATE_COLOR_ALGORITHM = staticmethod(lambda param_a: (param_a % 256, param_a *2 %256, param_a *3 %256) )
-    _DEFAULT_GENERATE_COORDINATE_ALGORITHM  = staticmethod( lambda param_a: (param_a, param_a *2) ) # 1 param, return tuple[int, int] 
-    _DEFAULT_GENERATE_FILENAME_ALGORITHM    = staticmethod(generate_unique_filename)           # 1 param
+    _DEFAULT_GENERATE_COLOR_ALGORITHM = staticmethod(
+        lambda param_a: (param_a % 256, param_a * 2 % 256, param_a * 3 % 256)
+    )
+    _DEFAULT_GENERATE_COORDINATE_ALGORITHM = staticmethod(
+        lambda param_a: (param_a, param_a * 2)
+    )  # 1 param, return tuple[int, int]
+    _DEFAULT_GENERATE_FILENAME_ALGORITHM = staticmethod(
+        generate_unique_filename
+    )  # 1 param
 
     def __init__(self):
         # Image
@@ -23,15 +30,19 @@ class DatasetGenerator:
 
         # Default algorithm
         self.algorithm = lambda value: value
-        self.generate_color_algorithm = self._DEFAULT_GENERATE_COLOR_ALGORITHM              # return: tuple(int, int, int)
-        self.generate_coordinate_algorithm = self._DEFAULT_GENERATE_COORDINATE_ALGORITHM    # return: tuple(int, int)
-        self.generate_filename_algorithm = self._DEFAULT_GENERATE_FILENAME_ALGORITHM        #
+        self.generate_color_algorithm = (
+            self._DEFAULT_GENERATE_COLOR_ALGORITHM
+        )  # return: tuple(int, int, int)
+        self.generate_coordinate_algorithm = (
+            self._DEFAULT_GENERATE_COORDINATE_ALGORITHM
+        )  # return: tuple(int, int)
+        self.generate_filename_algorithm = self._DEFAULT_GENERATE_FILENAME_ALGORITHM  #
 
     def _value(
         self,
         value,
         default_algorithm,
-        param_a: int,     # dynamic 
+        param_a: int,  # dynamic
     ):
         """
         Resolve a parameter value.
@@ -65,8 +76,6 @@ class DatasetGenerator:
             return value(param_a)
 
         return value
-    
-
 
     def create_circle_dataset(
         self,
@@ -96,7 +105,7 @@ class DatasetGenerator:
         - None
             Use the generator's default algorithm (``self.algorithm``)
             with the corresponding default value.
-        
+
 
         Parameters
         ----------
@@ -131,57 +140,47 @@ class DatasetGenerator:
             Circle border thickness.
             Use ``-1`` to generate a filled circle.
 
-        
+
         """
 
         for index in range(count):
-
             current_filename = generate_unique_filename(image_filename)
 
             current_metadata_filename = generate_unique_filename(metadata_filename)
 
             current_width = self._value(
-                width,
-                param_a=index,
-                default_algorithm=self.algorithm
+                width, param_a=index, default_algorithm=self.algorithm
             )
 
             current_height = self._value(
-                height,
-                param_a=index,
-                default_algorithm=self.algorithm
+                height, param_a=index, default_algorithm=self.algorithm
             )
 
             current_center = self._value(
                 center,
                 param_a=index,
-                default_algorithm=self.generate_coordinate_algorithm
+                default_algorithm=self.generate_coordinate_algorithm,
             )
 
             current_radius = self._value(
-                radius,
-                param_a=index,
-                default_algorithm=self.algorithm
-            ) 
+                radius, param_a=index, default_algorithm=self.algorithm
+            )
 
             current_circle_color = self._value(
                 circle_color,
                 param_a=index,
-                default_algorithm=self.generate_color_algorithm
+                default_algorithm=self.generate_color_algorithm,
             )
 
             current_background_color = self._value(
                 background_color,
                 param_a=index,
-                default_algorithm=self.generate_color_algorithm
+                default_algorithm=self.generate_color_algorithm,
             )
 
             current_thickness = self._value(
-                thickness,
-                param_a=index,
-                default_algorithm=self.algorithm
+                thickness, param_a=index, default_algorithm=self.algorithm
             )
-
 
             create_circle_dataset(
                 image_filename=current_filename,
@@ -194,8 +193,6 @@ class DatasetGenerator:
                 background_color=current_background_color,
                 thickness=current_thickness,
             )
-
-
 
     def reset_algorithm(self):
         """

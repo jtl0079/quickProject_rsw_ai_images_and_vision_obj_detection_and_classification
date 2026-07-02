@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from rsw_ai.backend.draw_square import *
 
+
 def create_square_image(
     filename: str = "square.png",
     width: int = 500,

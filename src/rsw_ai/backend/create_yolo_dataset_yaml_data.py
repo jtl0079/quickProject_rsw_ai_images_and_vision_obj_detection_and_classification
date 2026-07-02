@@ -42,9 +42,6 @@ def create_yolo_dataset_yaml_data(
     if test_path is not None:
         yaml_data["test"] = test_path
 
-    yaml_data["names"] = {
-        obj.id: obj.label
-        for obj in ObjectClass
-    }
+    yaml_data["names"] = {obj.id: obj.label for obj in ObjectClass}
 
     return yaml_data

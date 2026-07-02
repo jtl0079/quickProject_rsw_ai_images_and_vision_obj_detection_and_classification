@@ -48,11 +48,7 @@ def generate_unique_filename(filepath: str) -> str:
     seq = 1
 
     while True:
-
-        candidate = (
-            directory /
-            f"{filename}_{current_time}_{seq}{extension}"
-        )
+        candidate = directory / f"{filename}_{current_time}_{seq}{extension}"
 
         if not candidate.exists():
             return str(candidate)

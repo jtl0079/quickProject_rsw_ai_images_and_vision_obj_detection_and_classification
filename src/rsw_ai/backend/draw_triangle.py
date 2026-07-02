@@ -1,4 +1,3 @@
-
 import cv2
 import numpy as np
 
@@ -37,8 +36,8 @@ def draw_triangle(
     # Triangle vertices centered at origin
     points = np.array(
         [
-            [0, -2 * triangle_height / 3],          # top
-            [-side_length / 2, triangle_height / 3], # bottom-left
+            [0, -2 * triangle_height / 3],  # top
+            [-side_length / 2, triangle_height / 3],  # bottom-left
             [side_length / 2, triangle_height / 3],  # bottom-right
         ],
         dtype=np.float32,
@@ -49,7 +48,7 @@ def draw_triangle(
     rotation_matrix = np.array(
         [
             [np.cos(theta), -np.sin(theta)],
-            [np.sin(theta),  np.cos(theta)],
+            [np.sin(theta), np.cos(theta)],
         ],
         dtype=np.float32,
     )
@@ -67,6 +66,4 @@ def draw_triangle(
     if thickness == -1:
         cv2.fillPoly(image, [points], color)
     else:
-        cv2.polylines(
-            image, [points], isClosed=True, color=color, thickness=thickness
-        )
+        cv2.polylines(image, [points], isClosed=True, color=color, thickness=thickness)
